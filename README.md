@@ -104,6 +104,13 @@ npm start # Starts the Next.js production server
 
 ---
 
+## 🔗 Canlı Demo
+
+Projenin canlı versiyonunu buradan inceleyebilirsiniz:  
+👉 **[https://milestone-saas-management.vercel.app/](https://milestone-saas-management.vercel.app/)**
+
+---
+
 ## 👨‍💻 Created by
 
 **Özenç Dönmezer** - _Full Stack Developer_
