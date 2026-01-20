@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production Builds
+dist/
+server/dist/
+.next/
+client/.next/
+build/
+out/
+
+# Environment Variables
+.env
+.env.*
+server/.env
+client/.env.local
+
+# Debug & Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Misc
+.DS_Store
+*.pem
+.vercel
+*.tsbuildinfo
