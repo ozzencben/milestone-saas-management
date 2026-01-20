@@ -10,15 +10,21 @@ import { Notification as MyNotification } from "../../types/notification.type";
 import { Icon } from "../icons/Icon";
 import styles from "./Topbar.module.css";
 
-const Hamburger = memo(({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) => (
-  <button className={`${styles.hamburger} ${isOpen ? styles.open : ""}`} onClick={onClick} aria-label="Menu">
-    <div className={styles.inner}>
-      <span className={styles.lineTop}></span>
-      <span className={styles.lineMid}></span>
-      <span className={styles.lineBottom}></span>
-    </div>
-  </button>
-));
+const Hamburger = memo(
+  ({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) => (
+    <button
+      className={`${styles.hamburger} ${isOpen ? styles.open : ""}`}
+      onClick={onClick}
+      aria-label="Menu"
+    >
+      <div className={styles.inner}>
+        <span className={styles.lineTop}></span>
+        <span className={styles.lineMid}></span>
+        <span className={styles.lineBottom}></span>
+      </div>
+    </button>
+  ),
+);
 Hamburger.displayName = "Hamburger";
 
 export default function Topbar() {
@@ -34,7 +40,10 @@ export default function Topbar() {
   // 1. Dışarı tıklayınca kapatma
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
+      if (
+        notifRef.current &&
+        !notifRef.current.contains(event.target as Node)
+      ) {
         setIsNotifOpen(false);
       }
     }
@@ -49,7 +58,9 @@ export default function Topbar() {
         const res = await NotificationService.getMyNotifications();
         if (res.success) {
           setNotifications(res.data);
-          const unread = res.data.filter((n: MyNotification) => !n.isRead).length;
+          const unread = res.data.filter(
+            (n: MyNotification) => !n.isRead,
+          ).length;
           setUnreadCount(unread);
         }
       } catch (error) {
@@ -65,7 +76,9 @@ export default function Topbar() {
       setUnreadCount((prev) => prev + 1);
     });
 
-    return () => { socket.off("new_notification"); };
+    return () => {
+      socket.off("new_notification");
+    };
   }, []);
 
   // 3. Bildirim Paneli Açma ve Okundu İşaretleme
@@ -78,7 +91,7 @@ export default function Topbar() {
       try {
         await NotificationService.markAllAsRead();
         setUnreadCount(0);
-        setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+        setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
       } catch (error) {
         console.error("Mark as read error:", error);
       }
@@ -95,12 +108,16 @@ export default function Topbar() {
       <Hamburger isOpen={isAnyMenuOpen} onClick={toggleSidebar} />
 
       <div className={styles.brand}>
-        <h1 className={styles.brandName}>WorkHub</h1>
+        <h1 className={styles.brandName}>Milestone</h1>
       </div>
 
       <div className={styles.rightSection}>
         <div className={styles.notifWrapper} ref={notifRef}>
-          <button className={styles.notifBtn} onClick={handleToggleNotif} type="button">
+          <button
+            className={styles.notifBtn}
+            onClick={handleToggleNotif}
+            type="button"
+          >
             <Icon name="notification" />
             {unreadCount > 0 && (
               <span className={styles.badge}>
@@ -113,16 +130,23 @@ export default function Topbar() {
             <div className={styles.notifDropdown}>
               <div className={styles.notifHeader}>
                 <h3>Notifications</h3>
-                {unreadCount > 0 && <span className={styles.unreadTag}>{unreadCount} New</span>}
+                {unreadCount > 0 && (
+                  <span className={styles.unreadTag}>{unreadCount} New</span>
+                )}
               </div>
               <div className={styles.notifList}>
                 {notifications.length === 0 ? (
                   <div className={styles.emptyNotif}>No new notifications</div>
                 ) : (
                   notifications.slice(0, 8).map((n) => (
-                    <div key={n.id} className={`${styles.notifItem} ${!n.isRead ? styles.unread : ""}`}>
+                    <div
+                      key={n.id}
+                      className={`${styles.notifItem} ${!n.isRead ? styles.unread : ""}`}
+                    >
                       <div className={styles.notifContent}>
-                        <p className={styles.notifTitle}><strong>{n.title}</strong></p>
+                        <p className={styles.notifTitle}>
+                          <strong>{n.title}</strong>
+                        </p>
                         <span className={styles.notifMessage}>{n.message}</span>
                       </div>
                       {!n.isRead && <div className={styles.notifDot}></div>}
@@ -130,14 +154,21 @@ export default function Topbar() {
                   ))
                 )}
               </div>
-              <button className={styles.viewAllBtn} onClick={handleViewAll} type="button">
+              <button
+                className={styles.viewAllBtn}
+                onClick={handleViewAll}
+                type="button"
+              >
                 View All Notifications
               </button>
             </div>
           )}
         </div>
 
-        <div className={styles.avatarWrapper} onClick={() => router.push("/dashboard/profile")}>
+        <div
+          className={styles.avatarWrapper}
+          onClick={() => router.push("/dashboard/profile")}
+        >
           <Image
             src="/svg/user.png"
             alt="Avatar"
