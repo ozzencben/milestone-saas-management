@@ -2,6 +2,7 @@
 "use client";
 
 import { Icon } from "../icons/Icon";
+import { IconName } from "../icons/lib";
 import styles from "./EmptyFeature.module.css";
 
 interface EmptyFeatureProps {
@@ -10,11 +11,15 @@ interface EmptyFeatureProps {
   iconName: string;
 }
 
-export default function EmptyFeature({ title, description, iconName }: EmptyFeatureProps) {
+export default function EmptyFeature({
+  title,
+  description,
+  iconName,
+}: EmptyFeatureProps) {
   return (
     <div className={styles.container}>
       <div className={styles.iconWrapper}>
-        <Icon name={iconName as any} size={48} />
+        <Icon name={iconName as IconName} size={48} />
       </div>
       <h2>{title}</h2>
       <p>{description}</p>
