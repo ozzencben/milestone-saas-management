@@ -54,7 +54,7 @@ I developed this platform to centralize the entire project lifecycle. It serves 
 ### 2. General Setup
 
 \`\`\`bash
-git clone https://github.com/ozencdonmezer/milestone-management-system.git
+git clone https://github.com/ozzencben/milestone-saas-management.git
 cd milestone-management-system
 \`\`\`
 
