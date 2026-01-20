@@ -1,0 +1,179 @@
+.container {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.tableHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--background-card);
+}
+
+.titleArea h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.titleArea p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 4px 0 0 0;
+}
+
+.countBadge {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tableResponsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  background: var(--background-body);
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 250px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px var(--primary-light);
+}
+
+.userInfo .name {
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.userInfo .email {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+/* Projeler ve Roller Kısmı */
+.badgeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.projectGroup {
+  display: flex;
+  align-items: center;
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+  border-radius: 8px;
+  gap: 0.5rem;
+}
+
+.projectName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.roleTag {
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.developer {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+.client {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.miniRemove {
+  padding: 0.2rem;
+  border-radius: 4px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+.miniRemove:hover {
+  background: var(--error);
+  color: white;
+}
+
+.actionCol {
+  text-align: right;
+  width: 80px;
+}
+
+.mainActionBtn {
+  color: var(--text-muted);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.mainActionBtn:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.emptyState {
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.emptyState p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}

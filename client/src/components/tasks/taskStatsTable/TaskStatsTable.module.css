@@ -1,0 +1,145 @@
+.wrapper {
+  width: 100%;
+}
+
+.tableContainer {
+  background: transparent;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Satırlar arası boşluk */
+  text-align: left;
+}
+
+.table th {
+  padding: 12px 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table td {
+  padding: 16px 20px;
+  background: var(--background-card);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+/* Satır Köşelerini Yuvarlatma */
+.table td:first-child {
+  border-left: 1px solid var(--border-color);
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.table td:last-child {
+  border-right: 1px solid var(--border-color);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.row {
+  cursor: pointer;
+}
+
+.row:hover td {
+  background-color: rgba(99, 102, 241, 0.04);
+  border-color: var(--primary-color);
+  transform: scale(1.002);
+}
+
+.projectName {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectName strong {
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.projectName small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Durum Renkleri (Globals ile uyumlu) */
+.active { background: var(--primary-light); color: var(--primary-color); }
+.completed { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+.pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+
+.countCell {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.completedCount { color: var(--success); }
+.separator { color: var(--text-muted); margin: 0 2px; }
+
+.pendingActive {
+  color: var(--error);
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+}
+
+.pendingZero {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.progressCell {
+  min-width: 160px;
+}
+
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 10px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progressText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.loader, .emptyState {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-color);
+}

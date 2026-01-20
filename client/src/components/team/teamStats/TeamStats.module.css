@@ -1,0 +1,62 @@
+.statsGrid {
+  display: grid;
+  /* Mobil uyumlu: mobilde tek sütun, 768px üzerinde kartlar yan yana */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.iconWrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Arka plan rengini inline style yerine buradan veya değişkenlerden yönetebiliriz */
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: var(--text-secondary); /* Slate 600 / 400 */
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.value {
+  color: var(--text-main); /* Slate 900 / 50 */
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0.1rem 0 0 0;
+}
+
+/* Dark mode'da kartların daha belirgin olması için ince ayar */
+@media (prefers-color-scheme: dark) {
+  .statCard {
+    background: linear-gradient(145deg, var(--background-card), #1e293b);
+  }
+}

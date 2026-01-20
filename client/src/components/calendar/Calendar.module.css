@@ -1,0 +1,334 @@
+/* --- Ana Kapsayıcı ve Layout --- */
+.mainWrapper {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  background: var(--background-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  min-width: 0; /* Grid taşmalarını önlemek için kritik */
+}
+
+/* --- Header ve Navigasyon --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.monthInfo h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: var(--text-main);
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav button {
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.todayBtn {
+  padding: 8px 16px !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.rotateLeft {
+  transform: rotate(180deg);
+}
+
+/* --- Takvim Grid Yapısı --- */
+.daysRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+}
+
+.cell {
+  border: 0.5px solid rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cell:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.disabled {
+  opacity: 0.2;
+}
+.selected {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid var(--accent-color);
+}
+
+.dayNumber {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* --- Event Gösterimleri --- */
+.eventContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.miniEvent {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.projectEvent {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  border-left: 3px solid #8b5cf6;
+}
+.low {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-left: 3px solid #10b981;
+}
+.medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border-left: 3px solid #f59e0b;
+}
+.high {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-left: 3px solid #ef4444;
+}
+
+.moreCount {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  padding-left: 4px;
+}
+
+/* --- Yan Panel (Side Panel) --- */
+.sidePanel {
+  background: var(--background-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.panelHeader h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+.panelHeader p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.panelSection {
+  margin-top: 32px;
+}
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.panelSection h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.addBtn {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border: none;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quickAddForm input {
+  width: 100%;
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  outline: none;
+}
+
+.panelTaskItem,
+.panelProjectItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.emptyText {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* --- RESPONSIVE GÜNCELLEMELER --- */
+
+/* Orta Ölçekli Ekranlar (Laptops) */
+@media (max-width: 1300px) {
+  .mainWrapper {
+    grid-template-columns: 1fr 280px;
+    gap: 16px;
+    padding: 10px;
+  }
+}
+
+/* Tablet Görünümü */
+@media (max-width: 1100px) {
+  .mainWrapper {
+    grid-template-columns: 1fr;
+  }
+  .sidePanel {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* Mobil Görünümü (En Önemlisi) */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .monthInfo h2 {
+    font-size: 1.2rem;
+  }
+
+  .calendarGrid {
+    grid-auto-rows: minmax(70px, auto);
+  }
+
+  .cell {
+    padding: 6px;
+    min-height: 80px;
+  }
+
+  .dayNumber {
+    font-size: 0.75rem;
+  }
+
+  /* Mobilde yazılı eventler yerine renkli çizgiler/noktalar göster */
+  .miniEvent {
+    font-size: 0; /* Yazıyı sakla */
+    height: 6px;
+    padding: 0;
+    margin-top: 2px;
+    border-left: none;
+  }
+
+  .projectEvent,
+  .low,
+  .medium,
+  .high {
+    border-radius: 10px; /* Nokta gibi görünmesi için */
+  }
+
+  .moreCount {
+    display: none;
+  }
+
+  .dayName {
+    font-size: 0.6rem;
+  }
+}
+
+/* Çok Küçük Ekranlar */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

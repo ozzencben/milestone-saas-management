@@ -1,0 +1,391 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.titleInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconWrapper {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.titleInfo h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.titleInfo p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* Form Styling */
+.addForm {
+  display: flex;
+  gap: 12px;
+  background: var(--background-card);
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid var(--border-color);
+  padding-right: 12px;
+}
+
+.mainInput {
+  flex: 2;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  color: var(--text-main);
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.dateInput {
+  flex: 1;
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.formControls {
+  display: flex;
+  gap: 10px;
+}
+
+.customSelectContainer {
+  position: relative;
+  width: 130px;
+  user-select: none;
+}
+
+.selectSelected {
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.selectText {
+  flex: 1;
+}
+.arrow {
+  transform: rotate(90deg);
+  transition: transform 0.2s;
+  display: flex;
+  color: var(--text-muted);
+}
+.arrowUp {
+  transform: rotate(-90deg);
+}
+
+.selectOptions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.selectOption {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.selectOption:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.submitBtn {
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.card:hover {
+  border-color: #6366f1;
+  transform: translateY(-4px);
+  transition: all 0.2s;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tagsRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.high {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+.medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+.low {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.deadlineTag {
+  font-size: 10px;
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.cardBody {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contentArea {
+  flex: 1;
+}
+.taskTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.editInput {
+  width: 100%;
+  background: var(--background-body);
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+  color: var(--text-main);
+  padding: 8px;
+  font-family: inherit;
+  resize: none;
+}
+.editInput::-webkit-scrollbar {
+  display: none;
+}
+
+.cardActions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.card:hover .cardActions {
+  opacity: 1;
+}
+
+.actionBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+.deleteBtn:hover {
+  color: #ef4444;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.date {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Checkbox */
+.checkbox {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+.checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+}
+.checkbox input:checked ~ .checkmark {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+.checkbox input:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: block;
+}
+
+.done {
+  opacity: 0.5;
+}
+.done .taskTitle {
+  text-decoration: line-through;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+.pageBtn {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.pageInfo {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .addForm {
+    flex-direction: column;
+  }
+  .inputGroup {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-right: 0;
+    padding-bottom: 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .formControls {
+    width: 100%;
+  }
+  .customSelectContainer {
+    flex: 1;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

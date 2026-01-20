@@ -1,0 +1,530 @@
+.container {
+  padding: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Mevcut CSS'inin sonuna bunları ekleyebilirsin veya tam dosya olarak kullanabilirsin */
+
+.sectionWrapper {
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle span {
+  background: var(--border-color);
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Başkasına ait projeler için farklı kart stili */
+.joinedCard {
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+.ownerName {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+/* Header Area */
+.headerArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 20px; /* Küçük ekranlarda buton ve başlık arası mesafe */
+}
+
+.headerArea h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.addProjectBtn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap; /* Buton metninin kırılmasını engeller */
+  transition: all 0.2s ease;
+}
+
+.addProjectBtn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Filter Bar (Responsive Düzenleme) --- */
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 20px;
+  z-index: 10;
+  position: relative;
+  flex-wrap: wrap; /* Mobilde alt alta geçebilmesi için */
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px; /* Mobilde çok daralmaması için */
+  max-width: 480px;
+  transition: border-color 0.2s;
+}
+
+.searchWrapper:focus-within {
+  border-color: var(--primary-color);
+}
+
+.searchWrapper input {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: var(--text-main);
+  width: 100%;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap; /* Filtrelerin taşmasını önler */
+}
+
+.customSelectWrapper {
+  position: relative;
+  min-width: 150px;
+  flex: 1; /* Mobilde genişlemesine yardımcı olur */
+}
+
+.customSelectTrigger {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.customSelectTrigger:hover {
+  border-color: var(--primary-color);
+}
+
+.chevron {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+.customSelectMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 6px;
+  z-index: 110;
+  animation: slideIn 0.2s ease;
+}
+
+.customOption {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: 0.2s;
+}
+
+.customOption:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.selectedOpt {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(244, 63, 94, 0.05);
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.clearBtn:hover {
+  background: rgba(244, 63, 94, 0.1);
+  transform: scale(0.98);
+}
+
+.displayInfo {
+  font-size: 14px;
+  color: var(--text-secondary);
+  width: 100%; /* Sayı bilgisini bazen en sona atmak için */
+  margin-top: -10px; /* Mesafe ayarı */
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  z-index: 1;
+}
+
+/* Card Structure */
+.card {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.progressBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.actionWrapper {
+  position: relative;
+}
+
+.menuBtn {
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  width: 210px;
+  padding: 8px;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownLabel {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 12px 6px 12px;
+  letter-spacing: 0.5px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dotActive {
+  background-color: var(--success);
+}
+.dotCompleted {
+  background-color: var(--info);
+}
+.dotPending {
+  background-color: var(--warning);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 6px 0;
+}
+
+.deleteBtn {
+  color: var(--error) !important;
+}
+
+.deleteBtn:hover {
+  background: rgba(244, 63, 94, 0.1) !important;
+}
+
+/* Content */
+.cardContent {
+  margin-bottom: 30px;
+}
+
+.projectName {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.statusActive {
+  background: #d1fae5;
+  color: #065f46;
+}
+.statusCompleted {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.statusPending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.typePaid {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.typePersonal {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* Footer */
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-color);
+  margin-top: auto; /* Kartların boyu eşit değilse footer'ı alta iter */
+}
+
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dateInfo {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.dateLabel {
+  color: var(--error);
+  font-weight: 700;
+}
+
+.dateValue {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.priceTag {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.personalPrice {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.loadingWrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* --- Media Queries (Kırılma Noktaları) --- */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .headerArea {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .addProjectBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .searchWrapper {
+    max-width: none;
+  }
+
+  .filterGroup {
+    width: 100%;
+  }
+
+  .customSelectWrapper {
+    flex: 1;
+  }
+
+  .displayInfo {
+    text-align: center;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filterGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .customSelectWrapper {
+    width: 100%;
+  }
+
+  .headerArea h1 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,129 @@
+/* --- Font Tanımlamaları --- */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter28pt-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter28pt-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  /* --- Modern Light Palette (Indigo & Slate) --- */
+  --primary-color: #6366f1; /* Indigo: Modern ve enerjik mor-mavi */
+  --primary-hover: #4f46e5;
+  --primary-light: #eef2ff;
+
+  --background-body: #f8fafc; /* Çok hafif mavimsi beyaz (Slate 50) */
+  --background-card: #ffffff;
+  --background-sidebar: #ffffff;
+
+  /* --- Durum Renkleri (Modern Tonlar) --- */
+  --success: #10b981; /* Zümrüt Yeşili */
+  --error: #f43f5e; /* Rose/Kırmızı */
+  --warning: #f59e0b; /* Kehribar */
+  --info: #0ea5e9; /* Gökyüzü Mavisi */
+
+  /* --- Metin ve Kenarlıklar --- */
+  --text-main: #0f172a; /* Derin Lacivert (Slate 900) */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-muted: #94a3b8; /* Slate 400 */
+  --border-color: #e2e8f0; /* Slate 200 */
+
+  /* --- Tipografi ve Efektler --- */
+  --font-main: "Inter", -apple-system, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius-md: 12px;
+}
+
+/* --- Dark Mode (Kullanıcı Tercihine Göre Otomatik) --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-body: #020617; /* Çok derin gece mavisi */
+    --background-card: #0f172a; /* Slate 900 */
+    --background-sidebar: #0f172a;
+
+    --primary-color: #818cf8; /* Dark modda daha okunabilir açık indigo */
+    --primary-light: rgba(99, 102, 241, 0.15);
+
+    --text-main: #f8fafc; /* Slate 50 */
+    --text-secondary: #94a3b8; /* Slate 400 */
+    --text-muted: #64748b; /* Slate 500 */
+    --border-color: #1e293b; /* Slate 800 */
+
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* --- Temel Sıfırlama --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--background-body);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  line-height: 1.5;
+}
+
+/* --- Form Elemanları Miras Alımı --- */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+}
+
+/* --- Global Link ve Buton Ayarları --- */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: 0.2s ease;
+}
+
+/* --- Scrollbar Özelleştirme --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-body);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+::placeholder {
+  color: var(--text-muted);
+}

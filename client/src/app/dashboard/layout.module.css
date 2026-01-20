@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  height: 100vh; /* Ekranı tam kapla */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Dışarıda scroll oluşmasın */
+}
+
+.mainLayout {
+  display: flex;
+  flex: 1; /* Kalan tüm alanı kapla */
+  width: 100%;
+  position: relative; /* Sidebar'ın konumlanması için */
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  /* Sidebar'ın genişliği kadar boşluk bırakıyoruz */
+  /* Masaüstünde Sidebar 80px ise burası 80px olmalı */
+  margin-left: 80px;
+  height: 100%;
+  overflow-y: auto; /* Sadece projelerin olduğu yer kayacak */
+  background-color: var(--background-body); /* Alanı net görmek için açık gri */
+  transition: margin-left 0.3s ease; /* Sidebar açılınca yumuşak kaysın */
+}
+
+/* Sidebar genişlediğinde (collapsed class'ı varken) içeriği daha çok it */
+.mainLayout:has([class*="collapsed"]) .content {
+  margin-left: 250px;
+}
+
+@media (max-width: 1023px) {
+  .content {
+    margin-left: 0; /* Mobilde Sidebar üstte olduğu için boşluk sıfır */
+  }
+}

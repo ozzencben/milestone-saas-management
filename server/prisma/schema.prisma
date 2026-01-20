@@ -1,0 +1,214 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. ENUMLAR
+enum Role {
+  USER
+  ADMIN
+  CLIENT
+}
+
+enum ProjectStatus {
+  ACTIVE
+  COMPLETED
+  PENDING
+}
+
+enum ProjectType {
+  PAID
+  PORTFOLIO
+  PERSONAL
+}
+
+enum ResourceType {
+  LINK
+  FILE
+}
+
+enum ProjectRole {
+  DEVELOPER
+  CLIENT
+}
+
+enum NotificationType {
+  INFO
+  PROJECT_INVITE
+  TASK_COMPLETED
+  RESOURCE_ADDED
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// 2. MODELLER
+model User {
+  id               String          @id @default(uuid())
+  email            String          @unique
+  password         String
+  firstname        String?
+  lastname         String?
+  role             Role            @default(USER)
+
+  // İlişkiler
+  ownedProjects    Project[]       @relation("ProjectOwner")
+  memberOfProjects ProjectMember[] 
+  notifications    Notification[]
+  sentInvitations  ProjectInvitation[] @relation("InvitationsSent")
+  createdItems   ChecklistItem[] @relation("CreatedItems")
+  completedItems ChecklistItem[] @relation("CompletedItems")
+  activities Activity[]
+  personalTasks PersonalTask[]
+
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model Project {
+  id          String            @id @default(uuid())
+  name        String
+  description String?
+  status      ProjectStatus     @default(ACTIVE)
+  type        ProjectType       @default(PERSONAL)
+  price       Decimal?          @default(0)
+  currency    String            @default("USD")
+  deadline    DateTime?
+  
+  // Proje Sahibi
+  owner       User              @relation("ProjectOwner", fields: [ownerId], references: [id])
+  ownerId     String
+
+  // Proje Üyeleri (Ara tablo üzerinden)
+  members     ProjectMember[]   // User[] yerine ProjectMember[] olmalı
+
+  checklist   ChecklistItem[]
+  resources   ProjectResource[]
+
+  invitations   ProjectInvitation[]
+
+  activities  Activity[]
+
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model PersonalTask {
+  id        String   @id @default(uuid())
+  title     String
+  isDone    Boolean  @default(false)
+  priority  Priority @default(MEDIUM)
+  dueDate   DateTime?
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProjectMember {
+  id        String      @id @default(uuid())
+  
+  project   Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  
+  role      ProjectRole @default(DEVELOPER)
+
+  createdAt DateTime    @default(now())
+
+  @@unique([projectId, userId]) // Bir kullanıcı aynı projeye birden fazla kez üye olamaz
+}
+
+model ChecklistItem {
+  id        String   @id @default(uuid())
+  title     String
+  isDone    Boolean  @default(false)
+  isUrgent  Boolean  @default(false)
+  
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+
+  // Maddeyi kim oluşturdu?
+  createdById String
+  createdBy   User     @relation("CreatedItems", fields: [createdById], references: [id])
+
+  // Maddeyi kim tamamladı? (Opsiyonel, çünkü henüz tamamlanmamış olabilir)
+  completedById String?
+  completedBy   User?    @relation("CompletedItems", fields: [completedById], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ProjectResource {
+  id        String       @id @default(uuid())
+  title     String
+  url       String
+  type      ResourceType @default(LINK)
+  fileSize  String?
+  mimeType  String?
+
+  project   Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String   // Bildirimi alacak kullanıcı
+  user      User     @relation(fields: [userId], references: id, onDelete: Cascade)
+  
+  title     String
+  message   String
+  type      NotificationType @default(INFO)
+  link      String?  // Bildirime tıklandığında gidilecek URL (örn: /projects/123)
+  isRead    Boolean  @default(false)
+  
+  createdAt DateTime @default(now())
+}
+
+model ProjectInvitation {
+  id          String   @id @default(uuid())
+  projectId   String
+  email       String
+  role        ProjectRole @default(DEVELOPER)
+  invitedById String
+  status      InvitationStatus @default(PENDING)
+  createdAt   DateTime @default(now())
+
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  invitedBy   User     @relation("InvitationsSent", fields: [invitedById], references: [id])
+
+  @@unique([projectId, email]) // Aynı projeye aynı kişi iki kez davet edilemez
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String   // Örn: "TASK_COMPLETED", "MEMBER_INVITED"
+  entityId  String?  // Etkilenen objenin ID'si (Örn: silinen görevin ID'si)
+  entityName String? // Etkilenen objenin adı (Örn: "API Entegrasyonu")
+  createdAt DateTime @default(now())
+}

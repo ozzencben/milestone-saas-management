@@ -1,0 +1,942 @@
+/* --- Genel Konteyner ve Temel Yapı --- */
+.container {
+  padding: 32px;
+  margin: 0 auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color: var(--text-secondary);
+}
+
+/* --- Header ve Başlık Düzenleme --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.projectIcon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.titleArea {
+  flex: 1;
+}
+
+.subText {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.titleWithAction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleWithAction h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.inlineBudgetInput,
+.inlineTitleInput,
+.inlineTextArea {
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  background: transparent;
+  color: var(--text-main);
+  outline: none;
+  width: 100%;
+  resize: none;
+}
+
+.editIconBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  transition: 0.2s;
+}
+
+.editIconBtn:hover {
+  color: var(--primary-color);
+}
+
+/* --- Status Badge ve Dropdown --- */
+.headerActions {
+  position: relative;
+}
+
+.statusBadge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+
+.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+.completed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.statusMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+.statusMenu div {
+  padding: 10px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.statusMenu div:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+/* --- Layout Izgarası --- */
+.contentLayout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- Ana İçerik ve Kartlar --- */
+
+.deadlineWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deadlineBadge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s;
+  background: #fef3c7;
+  color: #92400e;
+  margin-bottom: 16px;
+}
+
+.inlineDeadlineInput {
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  background: transparent;
+  color: var(--text-main);
+  outline: none;
+  width: 100%;
+}
+
+/* --- Kartlar --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background: var(--background-card);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.statCard label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.editableValue {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.miniEditIcon {
+  font-size: 12px;
+  margin-left: 8px;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.editableValue:hover .miniEditIcon {
+  opacity: 1;
+}
+
+/* --- Section Alanları --- */
+.section {
+  background: var(--background-card);
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.descriptionText {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* --- Checklist, Filtre ve Pagination --- */
+/* Checklist */
+.checklistHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.progressContainer {
+  width: 150px;
+  height: 8px;
+  background: var(--background-body);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--success);
+  transition: width 0.5s ease;
+}
+
+.checklistTitleGroup {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+  gap: 50px;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.filterTab {
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.filterTab:hover {
+  border-color: var(--primary-color);
+}
+
+.filterTab.activeFilter {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: center;
+}
+
+.pagination button {
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--primary-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pagination button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.emptyText {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.checklistItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkItem {
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkItemContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.checkItem:hover {
+  background: var(--background-body);
+}
+
+.checkItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.editInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-main);
+  font-size: 15px;
+  width: 90%;
+  outline: none;
+}
+
+.done span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.urgent span {
+  color: var(--error);
+}
+
+.itemActions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+}
+
+.checkItem:hover .itemActions {
+  opacity: 1;
+}
+
+.addForm input {
+  width: 100%;
+  padding: 14px;
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  border-radius: 8px;
+  margin-top: 12px;
+  color: var(--text-main);
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem; /* Başlıktan daha küçük olması için */
+  color: #888; /* Daha soft, gri tonlarda bir renk */
+  font-weight: 400;
+  line-height: 1;
+}
+
+.doneBy {
+  color: #10b981; /* Tamamlandı bilgisi için yeşil tonları (Emerald) */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+/* Görev tamamlandığında tüm meta alanını biraz daha şeffaf yapabilirsin */
+.done .itemMeta {
+  opacity: 0.7;
+}
+
+/* Hover durumunda bilgilerin parlamasını istersen */
+.checkItem:hover .itemMeta {
+  color: #666;
+}
+
+/* Ana konteyner: Butonların yan yana düzgün durmasını sağlar */
+.confirmGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.2s ease-in-out; /* Küçük bir giriş animasyonu */
+}
+
+/* Genel buton stilini sıfırlama (Eğer globalde yoksa) */
+.confirmGroup button {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Silme Butonu (Tehlikeli işlem) */
+.btnDanger {
+  background-color: #fee2e2; /* Kırmızımsı arka plan */
+  color: #dc2626; /* Kırmızı metin */
+  border: 1px solid #fecaca !important;
+}
+
+.btnDanger:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+/* Vazgeç Butonu */
+.confirmGroup button:last-child {
+  background-color: var(--background-secondary, #f3f4f6);
+  color: var(--text-secondary, #4b5563);
+  border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.confirmGroup button:last-child:hover {
+  background-color: var(--border-color, #e5e7eb);
+  color: var(--text-main, #111827);
+}
+
+/* Silme İkonu (İlk haldeki buton) */
+.deleteBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.deleteBtn:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Giriş Animasyonu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Sidebar ve Resources --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 32px;
+  height: max-content;
+}
+
+.sidebarCard {
+  background: var(--background-card);
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.sidebarHeaderInline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebarHeaderInline h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.inviteSectionWrapper {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+  animation: slideDown 0.3s ease;
+}
+
+/* Üye Listesi Kapsayıcısı */
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Her Bir Üye Satırı */
+.member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.member:hover {
+  background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+.memberActionArea {
+  margin-left: auto;
+}
+.memberActionBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+}
+.memberConfirmGroup {
+  display: flex;
+  gap: 4px;
+}
+.memberYesBtn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.memberNoBtn {
+  background: #f1f5f9;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Avatar Tasarımı */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  border: 2px solid var(--background-card);
+  box-shadow: 0 0 0 1px var(--border-color);
+}
+
+/* Bilgi Alanı */
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden; /* Uzun isimler için */
+}
+
+.memberInfo span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  white-space: nowrap; /* Metni tek satıra zorlar */
+  overflow: hidden; /* Kutu dışına taşan kısmı gizler */
+  text-overflow: ellipsis; /* Taşma olduğunda sonuna '...' koyar */
+}
+
+/* Rol Badge Tasarımı */
+.roleBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+  background: var(--background-main);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+/* Eğer role göre renk değiştirmek istersen (Opsiyonel) */
+/* .member:has(.roleBadge:contains('CLIENT')) { ... } gibi mantıklar yerine 
+   JSX tarafında class eklemek daha mantıklıdır */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resourceList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resourceWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.resourceWrapper:hover {
+  background: var(--background-body);
+}
+
+.resourceItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+  transition: 0.2s;
+}
+
+.resourceIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resourceText {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.resourceText span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.resourceText small {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.deleteResourceBtn {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: var(--error);
+  cursor: pointer;
+  padding: 5px;
+  transition: 0.2s;
+}
+
+.resourceWrapper:hover .deleteResourceBtn {
+  opacity: 1;
+}
+
+/* Resource Form */
+.resourceForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--background-body);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.resourceForm input,
+.resourceForm select {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background-card);
+  color: var(--text-main);
+  font-size: 13px;
+}
+
+.saveResourceBtn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saveResourceBtn:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* File input için basit bir stil */
+.resourceForm input[type="file"] {
+  padding: 5px;
+  border: 1px dashed var(--border-color);
+  font-size: 12px;
+}
+
+/* Icon Bgs */
+.githubBg {
+  background: #181717 !important;
+  color: white !important;
+}
+.demoBg {
+  background: #f0fdf4 !important;
+  color: #16a34a !important;
+}
+.fileBg {
+  background: #fff1f2 !important;
+  color: #e11d48 !important;
+}
+.linkBg {
+  background: var(--primary-light) !important;
+  color: var(--primary-color) !important;
+}
+
+.addForm input {
+  width: 100%;
+  padding: 14px;
+  border: 1px dashed var(--border-color);
+  background: transparent;
+  border-radius: 8px;
+  margin-top: 12px;
+  color: var(--text-main);
+}
+
+/* --- Responsive Kuralları --- */
+
+@media (max-width: 1100px) {
+  .contentLayout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    order: 2;
+  }
+  .mainContent {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .checklistTitleGroup {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .filterGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+  .section {
+    padding: 20px;
+  }
+  .filterTab {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+}
+
+/* page.tsx içindeki checklist butonları için */
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: var(--background-body);
+  color: var(--primary-color);
+}
+
+/* Sidebar "+" ve "x" butonları için */
+.addSmallBtn {
+  background: var(--background-body);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addSmallBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* Checklist Onay Butonları */
+.confirmYesBtn {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.confirmNoBtn {
+  background-color: var(--background-body);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}

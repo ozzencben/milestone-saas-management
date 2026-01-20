@@ -1,0 +1,150 @@
+.inviteCard {
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inviteCard h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.inputWrapper {
+  flex: 3;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--background-main);
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.emailInput:focus {
+  border-color: var(--primary-color);
+}
+
+/* CUSTOM SELECT YAPISI */
+.selectWrapper {
+  flex: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.customSelect {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px 35px 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--background-main);
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.customSelect:focus {
+  border-color: var(--primary-color);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.infoText {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+.resultBox {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(99, 102, 241, 0.05); /* Soft primary background */
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+.selfWarning {
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.found p,
+.notFound p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.primaryBtn {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.primaryBtn:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.outlineBtn {
+  width: 100%;
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.outlineBtn:hover:not(:disabled) {
+  background: var(--primary-light);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

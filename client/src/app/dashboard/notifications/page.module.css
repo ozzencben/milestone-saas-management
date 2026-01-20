@@ -1,0 +1,198 @@
+.container {
+  margin: 2rem auto;
+  padding: 0 24px;
+  font-family: inherit;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.markAllBtn {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.markAllBtn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notifItem {
+  display: flex;
+  padding: 20px;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.notifItem:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* Okunmamış bildirim sol şerit vurgusu */
+.unread {
+  background-color: rgba(var(--primary-rgb), 0.03); /* Çok hafif arka plan */
+  border-left: 4px solid var(--primary-color);
+}
+
+.unread::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-main);
+  margin: 0 0 6px 0;
+  padding-right: 20px; /* Badge için boşluk */
+}
+
+.message {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+.time {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+/* Yükleme ve Boş Durum Tasarımları */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.noNotifications p {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--background-card);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* Dark mode uyumu için global değişkenlerini kullandım */
+
+/* Mevcut stillerine ekle */
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.acceptBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.acceptBtn:hover {
+  opacity: 0.9;
+}
+
+.rejectBtn {
+  background-color: transparent;
+  color: #ff4d4f; /* Hata/Silme rengi */
+  border: 1px solid #ff4d4f;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rejectBtn:hover {
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+.statusWrapper {
+  margin: 10px 0;
+}
+
+.statusBadgeAccepted {
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.statusBadgeRejected {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+/* Kartın içindeki zaman bilgisini butonların altına alalım */
+.time {
+  margin-top: 8px;
+  opacity: 0.7;
+}
